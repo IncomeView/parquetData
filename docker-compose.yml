@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: parquetData
+    environment:
+      POSTGRES_USER: moacir
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_DB: estudos
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
