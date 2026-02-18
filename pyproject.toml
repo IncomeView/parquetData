@@ -1,6 +1,6 @@
 [project]
 name = "parquetData"
-version = "0.1.0"
+version = "0.3.2"
 description = "Ferramentas para manipulação e validação de arquivos Parquet"
 authors = [
     { name = "IncomeView", email = "contato@incomeview.com" }
