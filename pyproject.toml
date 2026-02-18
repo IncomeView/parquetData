@@ -1,0 +1,17 @@
+[project]
+name = "parquetData"
+version = "0.1.0"
+description = "Ferramentas para manipulação e validação de arquivos Parquet"
+authors = [
+    { name = "IncomeView", email = "contato@incomeview.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "pyarrow",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

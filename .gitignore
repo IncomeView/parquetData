@@ -9,6 +9,7 @@
 #   PYTHON
 # ============================
 __pycache__/
+analytics.ipynb
 *.pyc
 *.pyo
 *.pyd
