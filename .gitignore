@@ -14,6 +14,7 @@ analytics.ipynb
 *.pyo
 *.pyd
 *.egg-info/
+dist/
 .venv/
 venv/
 env/
