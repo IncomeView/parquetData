@@ -72,6 +72,7 @@ Criar uma base sólida e escalável para:
                 │ Power BI / Metabase   │
                 └───────────────────────┘
 ```
+
 ---
 
 ## 🧩 Funcionalidades
@@ -109,6 +110,7 @@ docker build -t parquetdata:latest .
 # 2. Execução do container
 docker run --rm parquetdata:latest
 ```
+
 ---
 
 ## 📂 Estrutura do Projeto
@@ -144,14 +146,17 @@ parquetData/
 ├── requirements.txt
 └── README.md
 ```
+
 ---
 
 ## 🔄 Versionamento e Releases
 O versionamento **é automático e baseado em tags.**
+
 ```bash
 git tag v0.3.6
 git push origin v0.3.6
 ```
+
 O GitHub Actions:
 - extrai a versão da tag
 - atualiza o pyproject.toml
