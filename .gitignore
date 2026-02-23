@@ -10,6 +10,7 @@
 # ============================
 __pycache__/
 analytics.ipynb
+verif_adls.py
 *.pyc
 *.pyo
 *.pyd
