@@ -6,3 +6,5 @@ openpyxl
 python-dotenv
 pyarrow
 pytest
+azure-identity
+azure-storage-file-datalake
