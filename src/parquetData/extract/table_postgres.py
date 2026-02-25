@@ -1,44 +1,28 @@
 from pathlib import Path
 from typing import Optional
-
-import os
 import pandas as pd
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
-
-
-def _load_env() -> None:
-    env_path = Path(__file__).resolve().parents[2] / ".env"
-    load_dotenv(env_path)
+from parquetData.config import (POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD)
 
 
 def get_postgres_engine():
-    _load_env()
-
-    user = os.getenv("PG_USER")
-    password = os.getenv("PG_PASSWORD")
-    host = os.getenv("PG_HOST")
-    port = os.getenv("PG_PORT", "5432")
-    database = os.getenv("PG_DATABASE")
-
-    if not all([user, password, host, database]):
+    if not all([POSTGRES_HOST, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD]):
         raise ValueError("Variáveis de ambiente do PostgreSQL não estão completas.")
 
-    url = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}"
+    url = (
+        f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
+        f"@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+    )
     return create_engine(url)
 
 
 def read_table(table_name: str, schema: Optional[str] = None) -> pd.DataFrame:
     engine = get_postgres_engine()
 
-    if schema:
-        full_name = f"{schema}.{table_name}"
-    else:
-        full_name = table_name
-
+    full_name = f"{schema}.{table_name}" if schema else table_name
     query = f"SELECT * FROM {full_name}"
-    df = pd.read_sql(query, engine)
-    return df
+
+    return pd.read_sql(query, engine)
 
 
 def read_table_to_parquet(

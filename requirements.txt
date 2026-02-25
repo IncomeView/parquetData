@@ -5,6 +5,7 @@ requests
 openpyxl
 python-dotenv
 pyarrow
+click
 pytest
 azure-identity
 azure-storage-file-datalake

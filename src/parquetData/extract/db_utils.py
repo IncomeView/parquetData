@@ -1,10 +1,11 @@
 import psycopg2
 import pandas as pd
-from scripts.config import POSTGRES_HOST, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD
+from parquetData.config import (POSTGRES_HOST, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_PORT)
 
 def get_connection():
     return psycopg2.connect(
         host=POSTGRES_HOST,
+        port=POSTGRES_PORT,
         database=POSTGRES_DB,
         user=POSTGRES_USER,
         password=POSTGRES_PASSWORD
