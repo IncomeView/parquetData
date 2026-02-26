@@ -1,8 +1,7 @@
 import os
-import pandas as pd
-import pyarrow.parquet as pq
+import pyarrow.dataset as ds
 
-BRONZE_PATH = "data/bronze"
+BRONZE_PATH = "data/fonte"
 
 def list_parquet_files():
     return [
@@ -11,12 +10,10 @@ def list_parquet_files():
         if f.endswith(".parquet")
     ]
 
-def load_parquet(file_path):
-    table = pq.read_table(file_path)
-    df = table.to_pandas()
-    return df
+def load_parquet_in_batches(file_path, batch_size=50000):
+    dataset = ds.dataset(file_path, format="parquet")
+    for batch in dataset.to_batches(batch_size=batch_size):
+        yield batch.to_pandas()
 
 def get_table_name(file_path):
-    file = os.path.basename(file_path)
-    name = file.replace(".parquet", "")
-    return name.lower()
+    return os.path.basename(file_path).replace(".parquet", "").lower()

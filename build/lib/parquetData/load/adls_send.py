@@ -34,10 +34,6 @@ def upload_to_adls(local_file: Path, remote_path: str, overwrite: bool = True) -
     if not AZURE_STORAGE_FILESYSTEM:
         raise ValueError("AZURE_STORAGE_FILESYSTEM não definido no .env")
 
-# 🔥 Ajuste para o Fabric Lakehouse
-    if not remote_path.startswith("Files/"):
-        remote_path = f"Files/{remote_path}"
-
     service_client = get_adls_client()
     file_system = service_client.get_file_system_client(AZURE_STORAGE_FILESYSTEM)
     file_client = file_system.get_file_client(remote_path)
