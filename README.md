@@ -1,115 +1,107 @@
 
 # 📦 parquetData
-### Pipeline completo para ingestão, transformação e análise de dados baseados em arquivos Parquet.
+### Pipeline moderno para ingestão, transformação e publicação de dados em Parquet, PostgreSQL e Microsoft Fabric Lakehouse.
 
 ![CI](https://github.com/IncomeView/parquetData/actions/workflows/ci.yml/badge.svg)
 ![CD](https://github.com/IncomeView/parquetData/actions/workflows/release.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.12+-yellow)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-O **parquetData** é uma solução projetada para centralizar todo o ciclo de vida de dados provenientes de arquivos Parquet, permitindo que sejam transformados, estruturados, armazenados e disponibilizados para análises corporativas.
-
-Ele funciona como o núcleo de um pipeline moderno de dados, integrando:
-- ingestão de arquivos Parquet
-- transformações avançadas em Python
-- criação de tabelas e views em PostgreSQL (WSL)
-- preparação de datasets para dashboards
-- automação de CI/CD com versionamento baseado em tags
-- execução padronizada via Docker
+O **parquetData** é um pipeline de dados modular, escalável e orientado a ambientes modernos de engenharia de dados. Ele integra:
+- extração de dados de bancos relacionais (PostgreSQL)
+- geração de arquivos Parquet
+- envio estruturado para Azure Data Lake Storage Gen2
+- compatibilidade nativa com Microsoft Fabric Lakehouse (pasta Files/)
+- transformações Bronze → Silver → Gold
+- execução padronizada via CLI e Docker
+- versionamento automático via Git tags
+- CI/CD completo com GitHub Actions
+O projeto foi desenvolvido para atender pipelines corporativos que exigem rastreabilidade, padronização, automação e integração com plataformas analíticas modernas.
 
 ---
 
-## 🏢 Contexto
-O projeto foi idealizado para atender cenários onde:
-- há grande volume de dados em formato Parquet
-- é necessário padronizar e transformar informações
-- existe um banco PostgreSQL para armazenamento e modelagem
-- dashboards dependem de dados consistentes e atualizados
-- automação e rastreabilidade são essenciais
-- execução padronizada via containers facilita o ambiente de desenvolvimento
-
-O parquetData se torna o elo entre **dados brutos** e **informações analíticas**.
+## 🏢 Contexto Corporativo
+O parquetData faz parte da arquitetura de dados da **IncomeView**, atuando como o componente responsável por:
+- padronizar ingestão e transformação de dados
+- integrar fontes locais (PostgreSQL/WSL) com o ecossistema Azure
+- alimentar o **Microsoft Fabric** com dados estruturados
+- garantir versionamento, reprodutibilidade e governança
+Ele é utilizado em pipelines financeiros, contábeis e operacionais, onde consistência e auditabilidade são essenciais.
 
 ---
 
 ## 🚀 Objetivo do Projeto
-Criar uma base sólida e escalável para:
-- padronizar ingestão de arquivos Parquet
-- aplicar transformações avançadas
-- estruturar dados em PostgreSQL
-- gerar views analíticas
-- alimentar dashboards corporativos
-- automatizar releases e versionamento
-- permitir execução consistente via Docker
+Criar um pipeline completo e modular que:
+- extrai dados de bancos relacionais
+- gera arquivos Parquet padronizados
+- envia para o ADLS no formato compatível com o Fabric
+- organiza dados em camadas Bronze → Silver → Gold
+- suporta execução local, em WSL, Docker ou CI/CD
+- permite versionamento semântico baseado em tags
+- integra com dashboards corporativos
 
 ---
 
-## 🔄 Pipeline de Dados
+## 🔄 Arquitetura do Pipeline
 
 ```text
-                ┌───────────────────────┐
-                │   Arquivos Parquet    │
-                └──────────┬────────────┘
-                           │
-                           ▼
-                ┌───────────────────────┐
-                │ Transformações        │
-                │ Avançadas em Python   │
-                └──────────┬────────────┘
-                           │
-                           ▼
-                ┌───────────────────────┐
-                │   PostgreSQL (WSL)    │
-                │  • Tabelas            │
-                │  • Views              │
-                │  • Materialized Views │
-                │  • Functions          │
-                └──────────┬────────────┘
-                           │
-                           ▼
-                ┌───────────────────────┐
-                │   Dashboards / BI     │
-                │ Power BI / Metabase   │
-                └───────────────────────┘
+                ┌──────────────────────────────┐
+                │     PostgreSQL (WSL)         │
+                │   • Tabelas de origem        │
+                └──────────────┬───────────────┘
+                               │
+                               ▼
+                ┌──────────────────────────────┐
+                │        Bronze Pipeline       │
+                │  • Extração                  │
+                │  • Parquet local             │
+                │  • Upload para ADLS          │
+                │    (Files/bronze/)           │
+                └──────────────┬───────────────┘
+                               │
+                               ▼
+                ┌──────────────────────────────┐
+                │        Silver Pipeline       │
+                │  • Limpeza                   │
+                │  • Normalização              │
+                │  • Tipagem                   │
+                │  • Envio para ADLS           │
+                │    (Files/silver/)           │
+                └──────────────┬───────────────┘
+                               │
+                               ▼
+                ┌──────────────────────────────┐
+                │         Gold Pipeline        │
+                │  • Modelagem analítica       │
+                │  • Métricas e agregações     │
+                │  • Publicação no Fabric      │
+                │    (Files/gold/)             │
+                └──────────────────────────────┘
 ```
 
 ---
 
-## 🧩 Funcionalidades
-- 📥 Ingestão de arquivos Parquet
-- 🧹 Transformações avançadas em Python
-- 🗄️ Criação automática de tabelas no PostgreSQL
-- 📊 Geração de views analíticas
-- 🔄 Pipeline CI/CD com versionamento automático
-- 📦 Empacotamento automático (wheel + sdist)
+## 🧩 Funcionalidades Principais
+- 📥 Extração de tabelas PostgreSQL
+- 🪵 Geração de Parquet local (Bronze)
+- ☁️ Upload automático para ADLS (pasta Files/ compatível com Fabric)
+- 🧹 Transformações Bronze → Silver → Gold
 - 🧪 Testes automatizados (PyTest)
-- 🐳 Execução padronizada via Docker
+- 🐳 Execução via Docker
+- 🔄 CI/CD completo com GitHub Actions
+- 🏷️ Versionamento automático baseado em tags
+- 🧰 CLI integrada (parquetdata <comando>)
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 - Python 3.12+
-- Pandas
-- PyArrow
+- PyArrow / Pandas
 - PostgreSQL (WSL)
-- GitHub Actions (CI/CD)
+- Azure Storage (ADLS Gen2)
+- Microsoft Fabric Lakehouse
 - Docker
-
----
-
-## 🐳 Execução via Docker
-O projeto inclui suporte a execução containerizada, garantindo:
-- ambiente padronizado
-- isolamento de dependências
-- facilidade de implantação
-
-```bash
-# 1. Build da imagem
-docker build -t parquetdata:latest .
-
-# 2. Execução do container
-docker run --rm parquetdata:latest
-```
+- GitHub Actions (CI/CD)
 
 ---
 
@@ -118,86 +110,89 @@ docker run --rm parquetdata:latest
 ```text
 parquetData/
 │
-├── src/
-│   └── parquetData/
-│       └── __init__.py
-│
-├── scripts/
-│   ├── main.py
-│   ├── db_utils.py
-│   ├── config.py
-│   └── ...
+├── src/parquetData/
+│   ├── extract/
+│   │   ├── table_postgres.py
+│   │   └── db_utils.py
+│   ├── load/
+│   │   ├── adls_send.py
+│   │   ├── parquet_loader.py
+│   │   └── parquet_to_postgres.py
+│   ├── transform/
+│   │   ├── bronze_to_silver.py
+│   │   └── silver_to_gold.py
+│   ├── pipeline/
+│   │   ├── bronze_pipeline.py
+│   │   ├── silver_pipeline.py
+│   │   └── gold_pipeline.py
+│   ├── cli.py
+│   ├── settings.py
+│   └── __main__.py
 │
 ├── tests/
-│   ├── test_basic.py
-│   ├── test_empty.py
-│   ├── test_errors.py
-│   ├── test_roundtrip.py
-│   └── test_schema.py
-│
 ├── .github/workflows/
-│   ├── ci.yml
-│   └── release.yml
-│
-├── .gitignore
 ├── Dockerfile
-├── docker-compose.yml
 ├── pyproject.toml
-├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🔄 Versionamento e Releases
-O versionamento **é automático e baseado em tags.**
+## 🐳 Execução via Docker
 
 ```bash
-git tag v0.3.6
-git push origin v0.3.6
+docker build -t parquetdata:latest .
+docker run --rm parquetdata:latest
 ```
-
-O GitHub Actions:
-- extrai a versão da tag
-- atualiza o pyproject.toml
-- gera o wheel e o tar.gz
-- cria a Release automaticamente
 
 ---
 
-## 📘 Exemplos de Uso
-(serão adicionados futuramente)
+## 🔄 Versionamento e Releases
+O projeto usa **versionamento semântico baseado em tags**:
+
+```bash
+git tag v0.7.0
+git push origin v0.7.0
+```
+
+A pipeline de release:
+- lê a tag
+- atualiza a versão do pacote
+- gera wheel + sdist
+- publica a Release no GitHub
 
 ---
 
 ## 🧭 Roadmap
 ### ✔ Concluído
-- [x] Leitura de arquivos Parquet
-- [x] Transformações avançadas
-- [x] CI com testes
-- [x] CD com versionamento automático
-- [x] Empacotamento automático
-- [x] Suporte a Docker
-### 🔜 Próximas etapas sugeridas
-- [ ] Conector PostgreSQL completo
-- [ ] Geração automática de views
-- [ ] Carga incremental
-- [ ] Exportação para dashboards
-- [ ] Automação total do versionamento (semantic-release)
+- [x] Ambiente WSL real configurado
+- [x] .venv estável e integrado ao VS Code
+- [x] Bronze Pipeline funcional
+- [x] Upload para ADLS com caminho correto (Files/bronze/)
+- [x] CI/CD funcionando
+- [x] Docker funcional
+- [x] Versionamento automático por tags
+### 🔜 em andamento
+- [ ] Silver Pipeline (limpeza e normalização)
+- [ ] Gold Pipeline (modelagem analítica)
+- [ ] Integração com Warehouse Gen2
+- [ ] Publicação automática no Fabric
 - [ ] Documentação avançada
+### 🛣️ Futuro
+- [ ] Carga incremental
+- [ ] Orquestração (Fabric Data Pipelines / Airflow)
+- [ ] Monitoramento e alertas
 - [ ] Benchmarks de performance
-- [ ] Scripts de execução via Docker
 
 ---
 
 ## 🤝 Contribuições
-Contribuições são bem-vindas!
-Sugestões, melhorias e correções podem ser enviadas via Issues ou Pull Requests.
+Contribuições são bem-vindas via Issues e Pull Requests.
 
 ---
 
 ## 📄 Licença
-Este projeto é distribuído sob a licença MIT.
+MIT License.
 
 ---
 
