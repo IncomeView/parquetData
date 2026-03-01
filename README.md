@@ -16,6 +16,7 @@ O **parquetData** é um pipeline de dados modular, escalável e orientado a ambi
 - execução padronizada via CLI e Docker
 - versionamento automático via Git tags
 - CI/CD completo com GitHub Actions
+
 O projeto foi desenvolvido para atender pipelines corporativos que exigem rastreabilidade, padronização, automação e integração com plataformas analíticas modernas.
 
 ---
@@ -26,6 +27,7 @@ O parquetData faz parte da arquitetura de dados da **IncomeView**, atuando como 
 - integrar fontes locais (PostgreSQL/WSL) com o ecossistema Azure
 - alimentar o **Microsoft Fabric** com dados estruturados
 - garantir versionamento, reprodutibilidade e governança
+
 Ele é utilizado em pipelines financeiros, contábeis e operacionais, onde consistência e auditabilidade são essenciais.
 
 ---

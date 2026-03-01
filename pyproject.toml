@@ -15,3 +15,7 @@ dependencies = [
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project.scripts]
+parquetdata = "parquetData.cli:cli"
+workparquet = "parquetData.cli:cli"
