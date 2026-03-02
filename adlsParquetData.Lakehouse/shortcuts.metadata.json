@@ -1,0 +1,14 @@
+[
+  {
+    "name": "bronze",
+    "path": "/Files",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "4bfb83b8-56cd-499c-abb5-9f19e250c95a",
+        "location": "https://stfabricmoacir.dfs.core.windows.net",
+        "subpath": "/bronze/bronze"
+      }
+    }
+  }
+]

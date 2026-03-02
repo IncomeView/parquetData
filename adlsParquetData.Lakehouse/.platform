@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "adlsParquetData"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "891256b9-a187-ae8f-4025-8076d7476e4f"
+  }
+}
