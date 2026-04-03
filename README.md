@@ -1,3 +1,4 @@
+<br>
 
 ## 📦 parquetData
 #### Pipeline moderno para ingestão, transformação e publicação de dados em Parquet, PostgreSQL e Microsoft Fabric Lakehouse.
@@ -19,8 +20,7 @@ O **parquetData** é um pipeline de dados modular, escalável e orientado a ambi
 
 O projeto foi desenvolvido para atender pipelines corporativos que exigem rastreabilidade, padronização, automação e integração com plataformas analíticas modernas.
 
----
-
+<br><br>
 ## 🏢 Contexto Corporativo
 O parquetData faz parte da arquitetura de dados da **IncomeView**, atuando como o componente responsável por:
 - padronizar ingestão e transformação de dados
@@ -30,8 +30,7 @@ O parquetData faz parte da arquitetura de dados da **IncomeView**, atuando como 
 
 Ele é utilizado em pipelines financeiros, contábeis e operacionais, onde consistência e auditabilidade são essenciais.
 
----
-
+<br><br>
 ## 🚀 Objetivo do Projeto
 Criar um pipeline completo e modular que:
 - extrai dados de bancos relacionais
@@ -42,8 +41,7 @@ Criar um pipeline completo e modular que:
 - permite versionamento semântico baseado em tags
 - integra com dashboards corporativos
 
----
-
+<br><br>
 ## 🔄 Arquitetura do Pipeline
 
 ```text
@@ -81,8 +79,7 @@ Criar um pipeline completo e modular que:
                 └──────────────────────────────┘
 ```
 
----
-
+<br><br>
 ## 🧩 Funcionalidades Principais
 - 📥 Extração de tabelas PostgreSQL
 - 🪵 Geração de Parquet local (Bronze)
@@ -94,8 +91,7 @@ Criar um pipeline completo e modular que:
 - 🏷️ Versionamento automático baseado em tags
 - 🧰 CLI integrada (parquetdata <comando>)
 
----
-
+<br><br>
 ## 🛠️ Tecnologias Utilizadas
 - Python 3.12+
 - PyArrow / Pandas
@@ -105,8 +101,7 @@ Criar um pipeline completo e modular que:
 - Docker
 - GitHub Actions (CI/CD)
 
----
-
+<br><br>
 ## 📂 Estrutura do Projeto
 
 ```text
@@ -138,8 +133,7 @@ parquetData/
 └── README.md
 ```
 
----
-
+<br><br>
 ## 🐳 Execução via Docker
 
 ```bash
@@ -147,8 +141,7 @@ docker build -t parquetdata:latest .
 docker run --rm parquetdata:latest
 ```
 
----
-
+<br><br>
 ## 🔄 Versionamento e Releases
 O projeto usa **versionamento semântico baseado em tags**:
 
@@ -163,8 +156,7 @@ A pipeline de release:
 - gera wheel + sdist
 - publica a Release no GitHub
 
----
-
+<br><br>
 ## 🧭 Roadmap
 ### ✔ Concluído
 - [x] Ambiente WSL real configurado
@@ -174,10 +166,10 @@ A pipeline de release:
 - [x] CI/CD funcionando
 - [x] Docker funcional
 - [x] Versionamento automático por tags
+- [x] Integração com Warehouse Gen2
 ### 🔜 em andamento
 - [ ] Silver Pipeline (limpeza e normalização)
 - [ ] Gold Pipeline (modelagem analítica)
-- [ ] Integração com Warehouse Gen2
 - [ ] Publicação automática no Fabric
 - [ ] Documentação avançada
 ### 🛣️ Futuro
@@ -186,18 +178,15 @@ A pipeline de release:
 - [ ] Monitoramento e alertas
 - [ ] Benchmarks de performance
 
----
-
+<br><br>
 ## 🤝 Contribuições
 Contribuições são bem-vindas via Issues e Pull Requests.
 
----
-
+<br><br>
 ## 📄 Licença
 MIT License.
 
----
-
+<br><br>
 ## 👤 Autor
 Moacir Magalhães Faria  
 IncomeView — Data & Financial Engineering
