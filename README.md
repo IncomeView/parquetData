@@ -167,10 +167,10 @@ A pipeline de release:
 - [x] Docker funcional
 - [x] Versionamento automático por tags
 - [x] Integração com Warehouse Gen2
+- [x] Silver Pipeline (limpeza e normalização)
+- [x] Publicação automática no Fabric
 ### 🔜 em andamento
-- [ ] Silver Pipeline (limpeza e normalização)
 - [ ] Gold Pipeline (modelagem analítica)
-- [ ] Publicação automática no Fabric
 - [ ] Documentação avançada
 ### 🛣️ Futuro
 - [ ] Carga incremental
