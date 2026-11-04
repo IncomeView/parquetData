@@ -30,17 +30,26 @@ def get_adls_client() -> DataLakeServiceClient:
     return DataLakeServiceClient(account_url=account_url, credential=credential)
 
 
-def upload_to_adls(local_file: Path, remote_path: str, overwrite: bool = True) -> None:
-    if not AZURE_STORAGE_FILESYSTEM:
-        raise ValueError("AZURE_STORAGE_FILESYSTEM não definido no .env")
-
-# 🔥 Ajuste para o Fabric Lakehouse
-    if not remote_path.startswith("Files/"):
-        remote_path = f"Files/{remote_path}"
-
+def upload_to_adls(local_file: Path, remote_path: str, overwrite: bool = True):
     service_client = get_adls_client()
     file_system = service_client.get_file_system_client(AZURE_STORAGE_FILESYSTEM)
     file_client = file_system.get_file_client(remote_path)
 
+    if overwrite:
+        file_client.create_file()
+
+    chunk_size = 4 * 1024 * 1024  # 4 MB
+    offset = 0
+
     with open(local_file, "rb") as f:
-        file_client.upload_data(f, overwrite=overwrite)
+        while True:
+            data = f.read(chunk_size)
+            if not data:
+                break
+
+            file_client.append_data(data, offset=offset, length=len(data))
+            offset += len(data)
+
+    file_client.flush_data(offset)
+    print(f"✔️ Upload concluído: {remote_path}")
+
